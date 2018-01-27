@@ -19,3 +19,10 @@ CREATE TABLE MATRICULA(
 	PRIMARY KEY(codigoMatricula),
 	FOREIGN KEY(rutAlumno) REFERENCES ALUMNO(rut)
 );
+
+CREATE TABLE EJECUTIVO(
+	rutEjecutivo INT(11),
+	nombreEjecutivo VARCHAR(100),
+	activo CHAR(1) NOT NULL DEFAULT 1,
+	PRIMARY KEY(rutEjecutivo)
+);
