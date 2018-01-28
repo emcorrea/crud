@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>CRUD</title>
 	<script src="JavaScript/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="JavaScript/js-generales.js" type="text/javascript" charset="utf-8"></script>
 	<link rel="stylesheet" href="estilos/estilos-principal.css">
 	<link rel="stylesheet" href="estilos/bootstrap-4.0.0/css/bootstrap.min.css">
 	<script src="estilos/bootstrap-4.0.0/js/bootstrap.min.js"></script>
@@ -27,16 +28,18 @@
 			      <div class="modal-body">
 			        <form>
 			        	<div class="formulario-modal">
-			        		<input class="form-control form-control-sm" type="text" placeholder="RUT Cliente">
-			        		<input class="form-control form-control-sm" type="text" placeholder="Nombre Cliente">
-			        		<input class="form-control form-control-sm" type="text" placeholder="Apellido Paterno Cliente">
-			        		<input class="form-control form-control-sm" type="text" placeholder="Apellido Materno Cliente">
+			        		<input id="rut" class="form-control form-control-sm" type="text" placeholder="RUT Cliente">
+			        		<input id="nombre" class="form-control form-control-sm" type="text" placeholder="Nombre Cliente">
+			        		<input id="ap" class="form-control form-control-sm" type="text" placeholder="Apellido Paterno Cliente">
+			        		<input id="am" class="form-control form-control-sm" type="text" placeholder="Apellido Materno Cliente">
 			        		<!--Aca debe ir el select del sexo-->
-			        		<input class="form-control form-control-sm" type="date" placeholder="Fecha Nacimiento Cliente">
-			        		<input class="form-control form-control-sm" type="text" placeholder="Domicilio Cliente">
-			        		<input class="form-control form-control-sm" type="text" placeholder="Teléfono Cliente">
+			        		<input id="fechaNac" class="form-control form-control-sm" type="date" placeholder="Fecha Nacimiento Cliente">
+			        		<input id="domicilio" class="form-control form-control-sm" type="text" placeholder="Domicilio Cliente">
+			        		<input id="telefono" class="form-control form-control-sm" type="text" placeholder="Teléfono Cliente">
+			        		<!--Aca debe ir el select del Ejecutivo-->
+			        		<!--Aca debe ir el select de la Sucursal-->
 			        		<div class="modal-footer">
-						        <button type="button" class="btn btn-primary">Guardar</button>
+						        <button id="guardar" type="button" class="btn btn-primary">Guardar</button>
 						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 					      </div>
 			        	</div>
