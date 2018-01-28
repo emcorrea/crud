@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="contenedor">
-		<div class="titulo"><h5>CRUD MATRICULAS</h5></div>
+		<div class="titulo"><h4>CRUD CLIENTES</h4></div>
 		<div class="formulario">
 			<!--MODAL-->
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Agregar Nuevo Cliente</button>
@@ -26,7 +26,20 @@
 			      <!--INICIO DEL CONTENIDO DEL FORMULARIO-->
 			      <div class="modal-body">
 			        <form>
-			          
+			        	<div class="formulario-modal">
+			        		<input class="form-control form-control-sm" type="text" placeholder="RUT Cliente">
+			        		<input class="form-control form-control-sm" type="text" placeholder="Nombre Cliente">
+			        		<input class="form-control form-control-sm" type="text" placeholder="Apellido Paterno Cliente">
+			        		<input class="form-control form-control-sm" type="text" placeholder="Apellido Materno Cliente">
+			        		<!--Aca debe ir el select del sexo-->
+			        		<input class="form-control form-control-sm" type="date" placeholder="Fecha Nacimiento Cliente">
+			        		<input class="form-control form-control-sm" type="text" placeholder="Domicilio Cliente">
+			        		<input class="form-control form-control-sm" type="text" placeholder="Teléfono Cliente">
+			        		<div class="modal-footer">
+						        <button type="button" class="btn btn-primary">Guardar</button>
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					      </div>
+			        	</div>
 			        </form>
 			      </div>
 			      <!--FIN DEL FORMULARIO-->

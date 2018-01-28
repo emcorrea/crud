@@ -26,3 +26,15 @@ body{
 .modal-content{
 
 }
+
+.formulario-modal{
+	width: 70%;
+	margin: 30% auto;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	overflow: hidden;
+}
+
+.form-control-sm{
+	margin-bottom: 10px;
+}
