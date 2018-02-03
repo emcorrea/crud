@@ -14,11 +14,13 @@ class funcionesGenerales{
 		$values_ 	= "";
 		$array		= "";
 
+		//Guarda los datos de los campo para el value en un arreglo
 		for($i=0; $cantidadCampos > $i; $i++){
 			$datos = explode(",",$campos);
 			$_values[$i] = ":".$datos[$i];
 		}
 
+		//Prepara la sentencia insert
 		for($i=0; $cantidadCampos > $i; $i++){
 			if($cantidadCampos == $i+1){
 				$values_ = $values_.$_values[$i];
@@ -28,6 +30,7 @@ class funcionesGenerales{
 			$sql="INSERT INTO $nombreTabla ($campos) VALUES ($values_)";
 		}
 
+		//Prepara el array para el execute
 		for($i=0; $cantidadCampos > $i; $i++){
 			$datosCampos 	= explode(",",$campos);
 			$datosValores 	= explode(",",$valores);
@@ -39,6 +42,7 @@ class funcionesGenerales{
 			}
 			
 		}
+		echo$sql."<br>";
 		echo$array;
 		$resultado=$conexion->prepare($sql);
 		$resultado->execute(array($array));
