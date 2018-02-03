@@ -1,9 +1,16 @@
+<?php
+	include_once'../modelo/conexion.php';
+	include_once'../controlador/controlador-principal/principalDAO.php';
+	$conexion 	= new DBconexion();
+	$principal 	= new principal($conexion);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>CRUD</title>
 	<script src="JavaScript/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="JavaScript/formato_rut.js" type="text/javascript" charset="utf-8"></script>
 	<script src="JavaScript/js-generales.js" type="text/javascript" charset="utf-8"></script>
 	<link rel="stylesheet" href="estilos/estilos-principal.css">
 	<link rel="stylesheet" href="estilos/bootstrap-4.0.0/css/bootstrap.min.css">
@@ -15,7 +22,7 @@
 		<div class="formulario">
 			<!--MODAL-->
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Agregar Nuevo Cliente</button>
-			<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div id="modalfor" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 			  <div class="modal-dialog modal-lg">
 			    <div class="modal-content">
 			      <div class="modal-header">
@@ -26,7 +33,7 @@
 			      </div>
 			      <!--INICIO DEL CONTENIDO DEL FORMULARIO-->
 			      <div class="modal-body">
-			        <form>
+			        <form id="cliente" name="formulario-cliente" action="#" method="POST">
 			        	<div class="formulario-modal">
 			        		<input id="rut" class="form-control form-control-sm" type="text" placeholder="RUT Cliente">
 			        		<input id="nombre" class="form-control form-control-sm" type="text" placeholder="Nombre Cliente">
@@ -36,8 +43,8 @@
 			        		<input id="fechaNac" class="form-control form-control-sm" type="date" placeholder="Fecha Nacimiento Cliente">
 			        		<input id="domicilio" class="form-control form-control-sm" type="text" placeholder="Domicilio Cliente">
 			        		<input id="telefono" class="form-control form-control-sm" type="text" placeholder="Teléfono Cliente">
-			        		<!--Aca debe ir el select del Ejecutivo-->
-			        		<!--Aca debe ir el select de la Sucursal-->
+			        		<?=$principal->selectEjecutivo()?>
+			        		<?=$principal->selectSucursal()?>
 			        		<div class="modal-footer">
 						        <button id="guardar" type="button" class="btn btn-primary">Guardar</button>
 						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
