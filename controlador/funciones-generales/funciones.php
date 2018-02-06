@@ -13,6 +13,7 @@ class funcionesGenerales{
 		$_values 	= array();
 		$values_ 	= "";
 		$array		= "";
+        $_arreglo   = array();
 
 		//Guarda los datos de los campo para el value en un arreglo
 		for($i=0; $cantidadCampos > $i; $i++){
@@ -35,18 +36,12 @@ class funcionesGenerales{
 			$datosCampos 	= explode(",",$campos);
 			$datosValores 	= explode(",",$valores);
 
-			if($cantidadCampos == $i+1){
-				$array 	= $array."':".$datosCampos[$i]."'=>".$datosValores[$i];
-			}else{
-				$array 	= $array."':".$datosCampos[$i]."'=>".$datosValores[$i].",";
-			}
+			$_arreglo[$datosCampos[$i]]=$datosValores[$i];
 			
 		}
-		echo$sql."<br>";
-		echo$array;
+        
 		$resultado=$conexion->prepare($sql);
-		$resultado->execute(array($array));
-		
+		$resultado->execute($_arreglo);
 	}
 
 	//READ
@@ -67,7 +62,7 @@ class funcionesGenerales{
 
 $conexion = new DBconexion();
 $funciones = new funcionesGenerales($conexion);
-$funciones->grabar($conexion,"EJECUTIVO",2,"rutEjecutivo,nombreEjecutivo","17562105,'LUIS SOCALO ALVEAR'");
+$funciones->grabar($conexion,"EJECUTIVO",2,"rutEjecutivo,nombreEjecutivo","19206208,LUIS FUNZALIDA SALDIVAR");
 
 /*
 $valores = "Hola,como,estas";
