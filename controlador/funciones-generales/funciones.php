@@ -12,7 +12,6 @@ class funcionesGenerales{
 	function grabar($conexion,$nombreTabla,$cantidadCampos,$campos,$valores){
 		$_values 	= array();
 		$values_ 	= "";
-		$array		= "";
         $_arreglo   = array();
 
 		//Guarda los datos de los campo para el value en un arreglo
@@ -62,14 +61,7 @@ class funcionesGenerales{
 
 $conexion = new DBconexion();
 $funciones = new funcionesGenerales($conexion);
-$funciones->grabar($conexion,"EJECUTIVO",2,"rutEjecutivo,nombreEjecutivo","19206208,LUIS FUNZALIDA SALDIVAR");
+$funciones->grabar($conexion,"SUCURSAL",1,"descripcion","PASEO AHUMADA #777");
 
-/*
-$valores = "Hola,como,estas";
-$datos = explode(",",$valores);
-echo$datos[0]."<br>";
-echo$datos[1]."<br>";
-echo$datos[2]."<br>";
-*/
 
 ?>

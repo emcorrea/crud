@@ -37,7 +37,7 @@ $("#document").ready(function(){
 		}else{
 			$.ajax({
 				method:'POST',
-				url:'#',
+				url:'../controlador-principal/php/ajax-controlador.php',
 				data:'',
 				success:function(data){
 					alert("Cliente registrado exitosamente");
