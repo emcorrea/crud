@@ -35,10 +35,33 @@ $("#document").ready(function(){
 			alert("Debe ingresar el telefono del cliente");
 			$("#telefono").focus();
 		}else{
+            var rut         = $("#rut").val();
+            var nombre      = $("#nombre").val();
+            var aPaterno    = $("#ap").val();
+            var aMaterno    = $("#am").val();
+            var fechaNac    = $("#fechaNac").val();
+            var domicilio   = $("#domicilio").val();
+            var fono        = $("#telefono").val();
+            var ejecutivo   = $("#ejecutivo").val();
+            var sucursal    = $("#sucursal").val();
+            
+            var datos = 
+                {
+                    rut:rut,
+                    nombre:nombre,
+                    aPaterno:aPaterno,
+                    aMaterno:aMaterno,
+                    fechaNac:fechaNac,
+                    domicilio:domicilio,
+                    telefono:fono,
+                    ejecutivo:ejecutivo,
+                    sucursal:sucursal
+                };
+            
 			$.ajax({
 				method:'POST',
 				url:'../controlador-principal/php/ajax-controlador.php',
-				data:'',
+				data: datos,
 				success:function(data){
 					alert("Cliente registrado exitosamente");
 					$("#cliente")[0].reset();

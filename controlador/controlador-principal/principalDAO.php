@@ -1,6 +1,7 @@
 <?php
 //include __DIR__.'/../../modelo/conexion.php';
 include __DIR__.'/interfaz-DAO.php';
+include __DIR__.'/funciones-generales/funciones.php';
 
 class principal implements interfazPrincipalDAO{
 	private $conexion;
@@ -53,8 +54,15 @@ class principal implements interfazPrincipalDAO{
     	}
 	}
     
-    function agregaCliente(){
-        
+    function agregaCliente($rut,$nombre,$ap,$am,$fechaNac,$domicilio,$fono,$ejecutivo,$sucursal){
+        try{
+            $conexion = new DBconexion();
+            
+            
+            
+        }catch(Exception $e){
+            echo"No se pudo ejecutar la funcion grabar: Error ".$e;
+        }
     }
 	
 }
