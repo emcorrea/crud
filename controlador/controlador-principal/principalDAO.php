@@ -54,11 +54,12 @@ class principal implements interfazPrincipalDAO{
     	}
 	}
     
-    function agregaCliente($rut,$nombre,$ap,$am,$fechaNac,$domicilio,$fono,$ejecutivo,$sucursal){
+    function agregaCliente($rut,$nombre,$ap,$am,$fechaNac,$domicilio,$fono,$ejecutivo,$sucursal,$fechaRegistro){
         try{
-            $conexion = new DBconexion();
-            
-            
+            $conexion   = new DBconexion();
+            $funciones  = new funcionesGenerales($conexion);
+            $funciones->grabar($conexion,"PERSONA",7,"rut,nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,telefono,domicilio","$rut,$nombre,$ap,$am,$fechaNac,$domicilio,$fono,$ejecutivo,$sucursal");
+            $funciones->grabar($conexion,"CLIENTE",4,"rutCliente,ejecutivo,sucursal,fechaRegistro","$rut,$ejecutivo,$sucursal,$fechaRegistro");
             
         }catch(Exception $e){
             echo"No se pudo ejecutar la funcion grabar: Error ".$e;

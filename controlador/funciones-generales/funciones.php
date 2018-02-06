@@ -61,7 +61,7 @@ class funcionesGenerales{
 
 $conexion = new DBconexion();
 $funciones = new funcionesGenerales($conexion);
-$funciones->grabar($conexion,"SUCURSAL",1,"descripcion","PASEO AHUMADA #777");
+$funciones->grabar($conexion,"EJECUTIVO",2,"rutEjecutivo,nombreEjecutivo","21819079,RICARDO CORREA AVILA");
 
 
 ?>
