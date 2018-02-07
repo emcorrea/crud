@@ -39,12 +39,12 @@
 			        		<input id="nombre" class="form-control form-control-sm" type="text" placeholder="Nombre Cliente">
 			        		<input id="ap" class="form-control form-control-sm" type="text" placeholder="Apellido Paterno Cliente">
 			        		<input id="am" class="form-control form-control-sm" type="text" placeholder="Apellido Materno Cliente">
-			        		<!--Aca debe ir el select del sexo-->
 			        		<input id="fechaNac" class="form-control form-control-sm" type="date" placeholder="Fecha Nacimiento Cliente">
 			        		<input id="domicilio" class="form-control form-control-sm" type="text" placeholder="Domicilio Cliente">
 			        		<input id="telefono" class="form-control form-control-sm" type="text" placeholder="Teléfono Cliente">
 			        		<?=$principal->selectEjecutivo()?>
 			        		<?=$principal->selectSucursal()?>
+			        		<div id="respuesta"></div>
 			        		<div class="modal-footer">
 						        <button id="guardar" type="button" class="btn btn-primary">Guardar</button>
 						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

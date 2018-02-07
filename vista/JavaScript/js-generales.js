@@ -60,7 +60,7 @@ $("#document").ready(function(){
             
 			$.ajax({
 				method:'POST',
-				url:'../controlador-principal/php/ajax-controlador.php',
+				url:'../controlador/controlador-principal/php/ajax-controlador.php',
 				data: datos,
 				success:function(data){
 					alert("Cliente registrado exitosamente");
@@ -68,6 +68,8 @@ $("#document").ready(function(){
 					var deseaOtroRegistro = confirm("Desea agregar otro cliente");
 					if(deseaOtroRegistro==false){
 						location.reload();	
+					}else{
+						$("#respuesta").html(data);
 					}		
 				}
 			});

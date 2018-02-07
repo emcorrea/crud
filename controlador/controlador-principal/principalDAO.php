@@ -1,7 +1,10 @@
 <?php
 //include __DIR__.'/../../modelo/conexion.php';
 include __DIR__.'/interfaz-DAO.php';
+<<<<<<< HEAD
 include __DIR__.'funciones-generales/funciones.php';
+=======
+>>>>>>> 1d47b6df7f4c04fbd4898385a64bb3df91f31798
 
 class principal implements interfazPrincipalDAO{
 	private $conexion;
@@ -56,10 +59,11 @@ class principal implements interfazPrincipalDAO{
     
     function agregaCliente($rut,$nombre,$ap,$am,$fechaNac,$domicilio,$fono,$ejecutivo,$sucursal,$fechaRegistro){
         try{
+        	include __DIR__.'/funciones-generales/funciones.php';
             $conexion   = new DBconexion();
             $funciones  = new funcionesGenerales($conexion);
-            $funciones->grabar($conexion,"PERSONA",7,"rut,nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,telefono,domicilio","$rut,$nombre,$ap,$am,$fechaNac,$domicilio,$fono,$ejecutivo,$sucursal");
-            $funciones->grabar($conexion,"CLIENTE",4,"rutCliente,ejecutivo,sucursal,fechaRegistro","$rut,$ejecutivo,$sucursal,$fechaRegistro");
+            $funciones->grabar($conexion,"PERSONA",7,"rut,nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,domicilio,telefono","$rut,$nombre,$ap,$am,$fechaNac,$domicilio,$fono");
+            $funciones->grabar($conexion,"CLIENTE",4,"rutPersona,ejecutivo,sucursal,fechaInscripcion","$rut,$ejecutivo,$sucursal,$fechaRegistro");
             
         }catch(Exception $e){
             echo"No se pudo ejecutar la funcion grabar: Error ".$e;
