@@ -1,13 +1,8 @@
 <?php
 /*CRUD - CREATE,READ,UPDATE,DELETE*/
-<<<<<<< HEAD
 //include __DIR__.'/../../modelo/conexion.php';
 
-
 class funcionesGenerales{
-
-=======
->>>>>>> 1d47b6df7f4c04fbd4898385a64bb3df91f31798
 
 	//CREATE
 	function grabar($conexion,$nombreTabla,$cantidadCampos,$campos,$valores){
