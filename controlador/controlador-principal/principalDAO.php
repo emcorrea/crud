@@ -1,6 +1,10 @@
 <?php
 //include __DIR__.'/../../modelo/conexion.php';
 include __DIR__.'/interfaz-DAO.php';
+<<<<<<< HEAD
+include __DIR__.'funciones-generales/funciones.php';
+=======
+>>>>>>> 1d47b6df7f4c04fbd4898385a64bb3df91f31798
 
 class principal implements interfazPrincipalDAO{
 	private $conexion;
