@@ -67,7 +67,8 @@ $("#document").ready(function(){
 					$("#cliente")[0].reset();
 					var deseaOtroRegistro = confirm("Desea agregar otro cliente");
 					if(deseaOtroRegistro==false){
-						location.reload();	
+						location.reload();
+						$("#respuesta").html(data);	
 					}else{
 						$("#respuesta").html(data);
 					}		

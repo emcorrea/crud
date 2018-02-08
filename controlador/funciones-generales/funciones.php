@@ -2,8 +2,6 @@
 /*CRUD - CREATE,READ,UPDATE,DELETE*/
 //include __DIR__.'/../../modelo/conexion.php';
 
-class funcionesGenerales{
-
 	//CREATE
 	function grabar($conexion,$nombreTabla,$cantidadCampos,$campos,$valores){
 		$_values 	= array();
@@ -53,16 +51,6 @@ class funcionesGenerales{
 	function eliminar(){
 
 	}
-
-<<<<<<< HEAD
-//$conexion = new DBconexion();
-//$funciones = new funcionesGenerales($conexion);
-//$funciones->grabar($conexion,"EJECUTIVO",2,"rutEjecutivo,nombreEjecutivo","21819079,RICARDO CORREA AVILA");
-=======
-/*$conexion = new DBconexion();
-$funciones = new funcionesGenerales($conexion);
-$funciones->grabar($conexion,"EJECUTIVO",2,"rutEjecutivo,nombreEjecutivo","21819079,RICARDO CORREA AVILA");*/
->>>>>>> 1d47b6df7f4c04fbd4898385a64bb3df91f31798
 
 
 ?>
