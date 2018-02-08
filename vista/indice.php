@@ -58,6 +58,7 @@
 			</div>
 			<!--FIN MODAL-->
 		</div>
+		<div id="tabla"><?=$principal->clientesTabla()?></div>
 	</div>
 </body>
 </html>

@@ -55,15 +55,74 @@ class principal implements interfazPrincipalDAO{
     
     function agregaCliente($rut,$nombre,$ap,$am,$fechaNac,$domicilio,$fono,$ejecutivo,$sucursal,$fechaRegistro){
         try{
-        	include __DIR__.'/funciones-generales/funciones.php';
+        	include __DIR__.'../../funciones-generales/funciones.php';
             $conexion   = new DBconexion();
-            $funciones  = new funcionesGenerales($conexion);
-            $funciones->grabar($conexion,"PERSONA",7,"rut,nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,domicilio,telefono","$rut,$nombre,$ap,$am,$fechaNac,$domicilio,$fono");
-            $funciones->grabar($conexion,"CLIENTE",4,"rutPersona,ejecutivo,sucursal,fechaInscripcion","$rut,$ejecutivo,$sucursal,$fechaRegistro");
+          
+            grabar($conexion,"PERSONA",7,"rut,nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,domicilio,telefono","$rut,$nombre,$ap,$am,$fechaNac,$domicilio,$fono");
+            grabar($conexion,"CLIENTE",4,"rutPersona,ejecutivo,sucursal,fechaInscripcion","$rut,$ejecutivo,$sucursal,$fechaRegistro");
             
         }catch(Exception $e){
             echo"No se pudo ejecutar la funcion grabar: Error ".$e;
         }
+    }
+
+    function clientesTabla(){
+    	try {
+    		$conexion   = new DBconexion();
+    		$sql = $conexion->query("  
+				SELECT 
+					* 
+				FROM
+					PERSONA p JOIN CLIENTE cli 
+					ON(p.rut=cli.rutPersona)
+					JOIN EJECUTIVO ej
+					ON(cli.ejecutivo = ej.rutEjecutivo)
+					JOIN SUCURSAL suc
+					ON(cli.sucursal = suc.codigoSucursal)");
+
+    		if($sql->rowCount()>0){
+    			$n=0;
+    			?>
+    			<table>
+    				<tr>
+    					<th>N°</th>
+    					<th>RUT</th>
+    					<th>Nombre</th>
+    					<th>Fecha Nacimiento</th>
+    					<th>Domicilio</th>
+    					<th>Telefono</th>
+    					<th>Ejecutivo</th>
+    					<th>Sucursal</th>
+    					<th>Acción</th>
+    				</tr>
+    			<?php
+    			foreach ($sql->fetchAll(PDO::FETCH_OBJ) as $fila) {
+    				$n++;
+    				?>
+    				<tr>
+    					<td><?=$n?></td>
+    					<td><?=$fila->rut?></td>
+    					<td><?=$fila->nombre?></td>
+    					<td><?=$fila->fechaNacimiento?></td>
+    					<td><?=$fila->domicilio?></td>
+    					<td><?=$fila->telefono?></td>
+    					<td><?=$fila->nombreEjecutivo?></td>
+    					<td><?=$fila->descripcion?></td>
+    					<td>-*-</td>
+    				<?php
+    			}
+    			?>
+    				</tr>
+    			</table>
+    			<?php
+    		}
+
+    		
+    		
+    		
+    	} catch (Exception $e) {
+    		echo"No se pudo instanciar la funcion ClienteTabla: Error ".$e;
+    	}
     }
 	
 }

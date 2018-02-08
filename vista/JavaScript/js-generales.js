@@ -60,7 +60,7 @@ $("#document").ready(function(){
             
 			$.ajax({
 				method:'POST',
-				url:'../controlador/controlador-principal/php/ajax-controlador.php',
+				url:'../controlador/php/ajax-controlador.php',
 				data: datos,
 				success:function(data){
 					alert("Cliente registrado exitosamente");

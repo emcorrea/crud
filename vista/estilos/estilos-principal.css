@@ -38,3 +38,31 @@ body{
 .form-control-sm{
 	margin-bottom: 10px;
 }
+
+/*ESTILOS PARA LA TABLA*/
+.tabla{
+	width: 100%;
+}
+
+table{
+	width: 100%;
+	margin-top: 20px;
+}
+
+th{
+	padding: 3px;
+	background: #5499C7;
+	color: #FDFEFE;
+}
+
+tr:nth-child(odd) {
+    background-color:#f2f2f2;
+}
+tr:nth-child(even) {
+    background-color:#fbfbfb;
+}
+
+td{
+	color: #626567;
+	padding: 3px;
+}

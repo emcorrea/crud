@@ -1,13 +1,12 @@
 <?php
 
 include_once __DIR__.'/../../modelo/conexion.php';
-include_once __DIR__.'../principalDAO.php';
+include_once __DIR__.'../../controlador-principal/principalDAO.php';
 
 $conexion       = new DBconexion();
 $principal 		= new principal($conexion);
 
 if(isset($_REQUEST['rut']) && isset($_REQUEST['nombre']) && isset($_REQUEST['aPaterno']) && isset($_REQUEST['aMaterno']) && isset($_REQUEST['fechaNac']) && isset($_REQUEST['domicilio']) && isset($_REQUEST['telefono']) && isset($_REQUEST['ejecutivo']) && isset($_REQUEST['sucursal'])){
-    echo"PASO POR ACA";
     
     $rut            = $_REQUEST['rut'];
     $rut            = str_replace(".","",$rut);
