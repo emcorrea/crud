@@ -14,6 +14,7 @@
 	<script src="JavaScript/js-generales.js" type="text/javascript" charset="utf-8"></script>
 	<link rel="stylesheet" href="estilos/estilos-principal.css">
 	<link rel="stylesheet" href="estilos/bootstrap-4.0.0/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<script src="estilos/bootstrap-4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -21,7 +22,7 @@
 		<div class="titulo"><h4>CRUD CLIENTES</h4></div>
 		<div class="formulario">
 			<!--MODAL-->
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Agregar Nuevo Cliente</button>
+			<button type="button" class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg">Agregar Nuevo Cliente</button>
 			<div id="modalfor" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 			  <div class="modal-dialog modal-lg">
 			    <div class="modal-content">
@@ -46,7 +47,7 @@
 			        		<?=$principal->selectSucursal()?>
 			        		<div id="respuesta"></div>
 			        		<div class="modal-footer">
-						        <button id="guardar" type="button" class="btn btn-primary">Guardar</button>
+						        <button id="guardar" type="button" class="btn btn-success">Guardar</button>
 						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 					      </div>
 			        	</div>

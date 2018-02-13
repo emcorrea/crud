@@ -83,7 +83,7 @@ class principal implements interfazPrincipalDAO{
     		if($sql->rowCount()>0){
     			$n=0;
     			?>
-    			<table>
+    			<table class="table table-sm">
     				<tr>
     					<th>N°</th>
     					<th>RUT</th>
@@ -108,7 +108,7 @@ class principal implements interfazPrincipalDAO{
     					<td><?=$fila->telefono?></td>
     					<td><?=$fila->nombreEjecutivo?></td>
     					<td><?=$fila->descripcion?></td>
-    					<td>-*-</td>
+    					<td><button type="button" class="btn btn-outline-info btn-sm">Actualizar</button><button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button></td>
     				<?php
     			}
     			?>
