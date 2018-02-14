@@ -23,6 +23,11 @@ if(isset($_REQUEST['rut']) && isset($_REQUEST['nombre']) && isset($_REQUEST['aPa
     $fechaRegistro  = date('Y-m-d h:i:s');
     
     $principal->agregaCliente($rut,$nombre,$ap,$am,$fechaNac,$domicilio,$fono,$ejecutivo,$sucursal,$fechaRegistro);
+}else if(isset($_REQUEST['rutPersona'])){
+    $rut = $_REQUEST['rutPersona'];
+
+    $principal->eliminarCliente($rut);
+
 }else{
     echo"No se pudo instanciar la grabación";
 }

@@ -48,7 +48,10 @@
 	}
 
 	//DELETE
-	function eliminar(){
+	function eliminar($conexion,$tabla,$campo,$valor){
+		$sql="DELETE FROM $tabla WHERE $campo = ?";
+		$resultado=$conexion->prepare($sql);
+		$resultado->execute(array($valor));
 
 	}
 

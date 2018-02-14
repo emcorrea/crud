@@ -76,6 +76,24 @@ $("#document").ready(function(){
 			});
 		}
 	});
-
 		
 });
+
+function eliminar($valor){
+	var elimina = confirm("Esta seguro que desea eliminar al cliente");
+	if(elimina == true){
+		var rutPersona = $valor;
+		var datos={rutPersona:rutPersona};
+
+		$.ajax({
+			method:'POST',
+			url:'../controlador/php/ajax-controlador.php',
+			data: datos,
+			success:function(data){
+				alert("Cliente eliminado");
+				location.reload();	
+			}
+		});
+	}
+	
+}

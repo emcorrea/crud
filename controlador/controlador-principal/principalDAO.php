@@ -108,7 +108,10 @@ class principal implements interfazPrincipalDAO{
     					<td><?=$fila->telefono?></td>
     					<td><?=$fila->nombreEjecutivo?></td>
     					<td><?=$fila->descripcion?></td>
-    					<td><button type="button" class="btn btn-outline-info btn-sm">Actualizar</button><button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button></td>
+    					<td>
+                            <button type="button" class="btn btn-outline-info btn-sm">Actualizar</button> 
+                            <button type="button" class="btn btn-outline-danger btn-sm" id="eliminar" value="<?=$fila->rut?>" onclick="eliminar(this.value)">Eliminar</button>
+                        </td>
     				<?php
     			}
     			?>
@@ -121,6 +124,17 @@ class principal implements interfazPrincipalDAO{
     	} catch (Exception $e) {
     		echo"No se pudo instanciar la funcion ClienteTabla: Error ".$e;
     	}
+    }
+
+    function eliminarCliente($rut){
+        try {
+            include __DIR__.'../../funciones-generales/funciones.php';
+            $conexion   = new DBconexion();
+            eliminar($conexion,"PERSONA","rut",$rut);
+            eliminar($conexion,"CLIENTE","rutPersona",$rut);
+        } catch (Exception $e) {
+            echo"No se pudo ejecutar la funcion Eliminar: Error ".$e;
+        }
     }
 	
 }
