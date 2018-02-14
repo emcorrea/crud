@@ -28,6 +28,11 @@ if(isset($_REQUEST['rut']) && isset($_REQUEST['nombre']) && isset($_REQUEST['aPa
 
     $principal->eliminarCliente($rut);
 
+}else if(isset($_REQUEST['ventanaRut'])){
+    $rut = $_REQUEST['ventanaRut'];
+    
+    $principal->actualizar($rut);
+
 }else{
     echo"No se pudo instanciar la grabación";
 }

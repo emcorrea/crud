@@ -97,3 +97,16 @@ function eliminar($valor){
 	}
 	
 }
+
+function modal($rutModal){
+	var ventanaRut = $rutModal;
+	var datos={ventanaRut:ventanaRut};
+	$.ajax({
+		method:'POST',
+		url:'../controlador/php/ajax-controlador.php',
+		data: datos,
+		success:function(data){
+			
+		}
+	});
+}
