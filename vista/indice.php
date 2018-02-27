@@ -58,6 +58,7 @@
 			  </div>
 			</div>
 			<!--FIN MODAL-->
+			<div id="modal_actualizar"></div>
 		</div>
 		<div id="tabla"><?=$principal->clientesTabla()?></div>
 	</div>

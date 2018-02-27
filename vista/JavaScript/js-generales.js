@@ -106,7 +106,7 @@ function modal($rutModal){
 		url:'../controlador/php/ajax-controlador.php',
 		data: datos,
 		success:function(data){
-			
+			$("#modal_actualizar").html(data);
 		}
 	});
 }

@@ -109,7 +109,8 @@ class principal implements interfazPrincipalDAO{
     					<td><?=$fila->nombreEjecutivo?></td>
     					<td><?=$fila->descripcion?></td>
     					<td>
-                            <button type="button" class="btn btn-outline-info btn-sm" id="modal" value="<?=$fila->rut?>" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="modal(this.value)">Actualizar</button> 
+                            
+                            <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" value="<?=$fila->rut?>" onclick="modal(this.value)">Actualizar</button> 
                             <button type="button" class="btn btn-outline-danger btn-sm" id="eliminar" value="<?=$fila->rut?>" onclick="eliminar(this.value)">Eliminar</button>
                         </td>
     				<?php
@@ -139,6 +140,7 @@ class principal implements interfazPrincipalDAO{
 
     function actualizar($rut){
         $conexion   = new DBconexion();
+        $principal  = new principal($conexion);
         $sql=$conexion->prepare
         ("
             SELECT 
@@ -163,39 +165,36 @@ class principal implements interfazPrincipalDAO{
         $sucursal   = $fila['sucursal'];
 
         ?>
-        <div id="modalfor" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Actualizar Cliente</h5>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Actualizar Registro</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true">&times;</span>
                 </button>
-              </div>
-              <!--INICIO DEL CONTENIDO DEL FORMULARIO-->
-              <div class="modal-body">
-                <form id="Actualizacliente" name="formulario-Actualiza-cliente" action="#" method="POST">
-                    <div class="formulario-modal">
-                        <input id="rut" class="form-control form-control-sm" type="text" value="<?=$rut?>">
-                        <input id="nombre" class="form-control form-control-sm" type="text" value="<?=$nombre?>">
-                        <input id="ap" class="form-control form-control-sm" type="text" value="<?=$ap?>">
-                        <input id="am" class="form-control form-control-sm" type="text" value="<?=$am?>">
-                        <input id="fechaNac" class="form-control form-control-sm" type="date" value="<?=$fechaNac?>">
-                        <input id="domicilio" class="form-control form-control-sm" type="text" value="<?=$domicilio?>">
-                        <input id="telefono" class="form-control form-control-sm" type="text" value="<?=$fono?>">
+                </div>
+                <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <input id="rut" class="form-control form-control-sm" type="text" value="<?=$rut?>" placeholder="RUT Cliente">
+                        <input id="nombre" class="form-control form-control-sm" type="text" value="<?=$nombre?>" placeholder="Nombre Cliente">
+                        <input id="ap" class="form-control form-control-sm" type="text" value="<?=$ap?>" placeholder="Apellido Paterno Cliente">
+                        <input id="am" class="form-control form-control-sm" type="text" value="<?=$am?>" placeholder="Apellido Materno Cliente">
+                        <input id="fechaNac" class="form-control form-control-sm" type="date" value="<?=$fechaNac?>" placeholder="Fecha Nacimiento Cliente">
+                        <input id="domicilio" class="form-control form-control-sm" type="text" value="<?=$domicilio?>" placeholder="Domicilio Cliente">
+                        <input id="telefono" class="form-control form-control-sm" type="text" value="<?=$fono?>" placeholder="Teléfono Cliente">
                         <?=$principal->selectEjecutivo()?>
                         <?=$principal->selectSucursal()?>
-                        <div id="respuesta"></div>
-                        <div class="modal-footer">
-                            <button id="actualizar" type="button" class="btn btn-success">Actualizar</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                      </div>
                     </div>
                 </form>
-              </div>
-              <!--FIN DEL FORMULARIO-->
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Actualizar</button>
+                </div>
+                </div>
             </div>
-          </div>
         </div>
         <?php
     }
