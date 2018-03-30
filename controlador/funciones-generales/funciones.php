@@ -6,7 +6,7 @@
 	function grabar($conexion,$nombreTabla,$cantidadCampos,$campos,$valores){
 		$_values 	= array();
 		$values_ 	= "";
-        $_arreglo   = array();
+		$_arreglo   = array();
 
 		//Guarda los datos de los campo para el value en un arreglo
 		for($i=0; $cantidadCampos > $i; $i++){
