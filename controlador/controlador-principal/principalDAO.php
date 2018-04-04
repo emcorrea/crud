@@ -157,9 +157,9 @@ class principal implements interfazPrincipalDAO{
                     <input id="telefono" class="form-control form-control-sm" type="text" value="<?=$fila['telefono']?>">
                     <?=$principal->selectEjecutivo()?>
                     <?=$principal->selectSucursal()?>
-                    <div class="modal-footer">
-                        <button id="guardar" type="button" class="btn btn-success">Guardar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <div class="btns-actualizar">
+                        <button id="guardar" type="button" class="btn btn-success">Actualizar</button>
+                        <button type="button" class="btn btn-secondary" onclick="window.close()">Cerrar</button>
                     </div>
                 </div>
             </form>
