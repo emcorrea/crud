@@ -99,6 +99,6 @@ function eliminar($valor){
 }
 
 function ventanaActualizar(valor){
-	window.open("www.google.cl?rut="+valor,"Actualizar","menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes,width=500,height=500");
+	window.open("actualizar.php?rut="+valor,"Actualizar","menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes,width=500,height=500");
 }
 

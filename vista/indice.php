@@ -49,7 +49,7 @@
 			        		<div class="modal-footer">
 						        <button id="guardar" type="button" class="btn btn-success">Guardar</button>
 						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					      </div>
+					      	</div>
 			        	</div>
 			        </form>
 			      </div>

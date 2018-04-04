@@ -137,6 +137,37 @@ class principal implements interfazPrincipalDAO{
             echo"No se pudo ejecutar la funcion Eliminar: Error ".$e;
         }
     }
+
+    function actualizar($rut){
+        try {
+            $conexion   = new DBconexion();
+            $principal  = new principal($conexion);
+            $sql = $conexion->prepare("SELECT * FROM PERSONA WHERE rut = ?");
+            $sql->execute(array($rut));
+            $fila = $sql->fetch();
+        ?>
+            <form id="cliente" name="formulario-cliente" action="#" method="POST">
+                <div class="formulario-modal">
+                    <input id="rut" class="form-control form-control-sm" type="text" value="<?=$rut?>" ">
+                    <input id="nombre" class="form-control form-control-sm" type="text" value="<?=$fila['nombre']?>">
+                    <input id="ap" class="form-control form-control-sm" type="text" value="<?=$fila['apellidoPaterno']?>">
+                    <input id="am" class="form-control form-control-sm" type="text" value="<?=$fila['apellidoMaterno']?>">
+                    <input id="fechaNac" class="form-control form-control-sm" type="date" value="<?=$fila['fechaNacimiento']?>">
+                    <input id="domicilio" class="form-control form-control-sm" type="text" value="<?=$fila['domicilio']?>">
+                    <input id="telefono" class="form-control form-control-sm" type="text" value="<?=$fila['telefono']?>">
+                    <?=$principal->selectEjecutivo()?>
+                    <?=$principal->selectSucursal()?>
+                    <div class="modal-footer">
+                        <button id="guardar" type="button" class="btn btn-success">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </form>
+        <?php
+        } catch (Exception $e) {
+            
+        }
+    }
 	
 }
 
