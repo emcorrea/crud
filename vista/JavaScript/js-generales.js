@@ -98,15 +98,7 @@ function eliminar($valor){
 	
 }
 
-function modal($rutModal){
-	var ventanaRut = $rutModal;
-	var datos={ventanaRut:ventanaRut};
-	$.ajax({
-		method:'POST',
-		url:'../controlador/php/ajax-controlador.php',
-		data: datos,
-		success:function(data){
-			$("#modal_actualizar").html(data);
-		}
-	});
+function ventanaActualizar(valor){
+	window.open("www.google.cl?rut="+valor,"Actualizar","menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes,width=500,height=500");
 }
+
