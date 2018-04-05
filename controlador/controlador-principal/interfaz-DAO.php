@@ -1,8 +1,8 @@
 <?php
 	
 	interface interfazPrincipalDAO{
-		function selectEjecutivo();
-		function selectSucursal();
+		function selectEjecutivo($rut);
+		function selectSucursal($rut);
         function agregaCliente($rut,$nombre,$ap,$am,$fechaNac,$domicilio,$fono,$ejecutivo,$sucursal,$fechaRegistro);
         function clientesTabla();
         function eliminarCliente($rut);

@@ -8,9 +8,13 @@ class principal implements interfazPrincipalDAO{
         $this->conexion = $conexion;
     }
 
-	function selectEjecutivo(){
+	function selectEjecutivo($rut){
 	    try {
 			$conexion = new DBconexion();
+
+			$sql=$conexion->prepare("SELECT * FROM CLIENTE WHERE rutPersona = ?");
+			$sql->execute(array($rut));
+
 
 			$sql=$conexion->query("SELECT * FROM EJECUTIVO WHERE activo = 1");
 			?>
