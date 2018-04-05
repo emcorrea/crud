@@ -29,7 +29,7 @@ class principal implements interfazPrincipalDAO{
 				$ejecutivo 		= $fila['ejecutivo'];
 				$nomEjecutivo 	= $fila['nombreEjecutivo'];
 
-				$sql=$conexion->prepare("SELECT * FROM EJECUTIVO WHERE rutEjecutivo = ? activo = ?");
+				$sql=$conexion->prepare("SELECT * FROM EJECUTIVO WHERE rutEjecutivo != ? AND activo = ?");
 				$sql->execute(array($ejecutivo,1));
 				?>
 				<select name="ejecutivo" id="ejecutivo" class="form-control form-control-sm">
@@ -85,7 +85,7 @@ class principal implements interfazPrincipalDAO{
 				$sucursal 		= $fila['sucursal'];
 				$nomEjecutivo 	= $fila['descripcion'];
 
-				$sql=$conexion->prepare("SELECT * FROM SUCURSAL WHERE codigoSucursal != ? activo = ?");
+				$sql=$conexion->prepare("SELECT * FROM SUCURSAL WHERE codigoSucursal != ? AND activo = ?");
 				$sql->execute(array($sucursal,1));
 				?>
 				<select name="sucursal" id="sucursal" class="form-control form-control-sm">
@@ -224,8 +224,8 @@ class principal implements interfazPrincipalDAO{
                     <?=$principal->selectEjecutivo($rut)?>
                     <?=$principal->selectSucursal($rut)?>
                     <div class="btns-actualizar">
-                        <button id="guardar" type="button" class="btn btn-success">Actualizar</button>
-                        <button type="button" class="btn btn-secondary" onclick="window.close()">Cerrar</button>
+                        <button id="actualizar" type="button" class="btn btn-info btn-sm">Actualizar</button>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="window.close()">Cerrar</button>
                     </div>
                 </div>
             </form>

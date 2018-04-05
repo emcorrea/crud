@@ -43,8 +43,8 @@
 			        		<input id="fechaNac" class="form-control form-control-sm" type="date" placeholder="Fecha Nacimiento Cliente">
 			        		<input id="domicilio" class="form-control form-control-sm" type="text" placeholder="Domicilio Cliente">
 			        		<input id="telefono" class="form-control form-control-sm" type="text" placeholder="Teléfono Cliente">
-			        		<?=$principal->selectEjecutivo()?>
-			        		<?=$principal->selectSucursal()?>
+			        		<?=$principal->selectEjecutivo(0)?>
+			        		<?=$principal->selectSucursal(0)?>
 			        		<div id="respuesta"></div>
 			        		<div class="modal-footer">
 						        <button id="guardar" type="button" class="btn btn-success">Guardar</button>
