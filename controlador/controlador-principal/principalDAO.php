@@ -12,46 +12,108 @@ class principal implements interfazPrincipalDAO{
 	    try {
 			$conexion = new DBconexion();
 
-			$sql=$conexion->prepare("SELECT * FROM CLIENTE WHERE rutPersona = ?");
+			$sql=$conexion->prepare
+				("
+					SELECT 
+						* 
+					FROM 
+						CLIENTE cli JOIN EJECUTIVO eje
+						ON(cli.ejecutivo = eje.rutEjecutivo) 
+					WHERE 
+						rutPersona = ?
+				");
 			$sql->execute(array($rut));
+			if($sql->rowCount()>0)
+			{
+				$fila = $sql->fetch();
+				$ejecutivo 		= $fila['ejecutivo'];
+				$nomEjecutivo 	= $fila['nombreEjecutivo'];
 
-
-			$sql=$conexion->query("SELECT * FROM EJECUTIVO WHERE activo = 1");
-			?>
-			<select name="ejecutivo" id="ejecutivo" class="form-control form-control-sm">
-				<option value="0">Seleccione ejecutivo</option>
-			<?php
-			while($resultado = $sql->fetch()){
+				$sql=$conexion->prepare("SELECT * FROM EJECUTIVO WHERE rutEjecutivo = ? activo = ?");
+				$sql->execute(array($ejecutivo,1));
 				?>
-				<option value='<?=$resultado['rutEjecutivo']?>'><?=$resultado['nombreEjecutivo']?></option>
+				<select name="ejecutivo" id="ejecutivo" class="form-control form-control-sm">
+					<option value="<?=$ejecutivo?>"><?=$nomEjecutivo?></option>
 				<?php
-			}
-			?>
-			</select>
-			<?php	
+				while($resultado = $sql->fetch()){
+					?>
+					<option value='<?=$resultado['rutEjecutivo']?>'><?=$resultado['nombreEjecutivo']?></option>
+					<?php
+				}
+				?>
+				</select>
+				<?php
+			}else{
+				$sql=$conexion->query("SELECT * FROM EJECUTIVO WHERE activo = 1");
+				?>
+				<select name="ejecutivo" id="ejecutivo" class="form-control form-control-sm">
+					<option value="0">Seleccione ejecutivo</option>
+				<?php
+				while($resultado = $sql->fetch()){
+					?>
+					<option value='<?=$resultado['rutEjecutivo']?>'><?=$resultado['nombreEjecutivo']?></option>
+					<?php
+				}
+				?>
+				</select>
+				<?php
+			}	
     	} catch (Exception $e) {
     		echo"No se pudo intanciar el metodo, error: ".$e;
     	}
 
 	}
 
-	function selectSucursal(){
+	function selectSucursal($rut){
 		try {
 			$conexion = new DBconexion();
 
-			$sql=$conexion->query("SELECT * FROM SUCURSAL WHERE activo = 1");
-			?>
-			<select name="sucursal" id="sucursal" class="form-control form-control-sm">
-				<option value="0">Seleccione sucursal</option>
-			<?php
-			while($resultado = $sql->fetch()){
+			$sql=$conexion->prepare
+				("
+					SELECT 
+						* 
+					FROM 
+						CLIENTE cli JOIN SUCURSAL sucu
+						ON(cli.sucursal = sucu.codigoSucursal) 
+					WHERE 
+						rutPersona = ?
+				");
+			$sql->execute(array($rut));
+			if($sql->rowCount()>0)
+			{
+				$fila = $sql->fetch();
+				$sucursal 		= $fila['sucursal'];
+				$nomEjecutivo 	= $fila['descripcion'];
+
+				$sql=$conexion->prepare("SELECT * FROM SUCURSAL WHERE codigoSucursal != ? activo = ?");
+				$sql->execute(array($sucursal,1));
 				?>
-				<option value='<?=$resultado['codigoSucursal']?>'><?=$resultado['descripcion']?></option>
+				<select name="sucursal" id="sucursal" class="form-control form-control-sm">
+					<option value="<?=$sucursal?>"><?=$nomEjecutivo?></option>
 				<?php
-			}
-			?>
-			</select>
-			<?php	
+				while($resultado = $sql->fetch()){
+					?>
+					<option value='<?=$resultado['codigoSucursal']?>'><?=$resultado['descripcion']?></option>
+					<?php
+				}
+				?>
+				</select>
+				<?php
+			}else{
+				$sql=$conexion->query("SELECT * FROM SUCURSAL WHERE activo = 1");
+				?>
+				<select name="sucursal" id="sucursal" class="form-control form-control-sm">
+					<option value="0">Seleccione sucursal</option>
+				<?php
+				while($resultado = $sql->fetch()){
+					?>
+					<option value='<?=$resultado['codigoSucursal']?>'><?=$resultado['descripcion']?></option>
+					<?php
+				}
+				?>
+				</select>
+				<?php
+			}	
     	} catch (Exception $e) {
     		echo"No se pudo intanciar el metodo, error: ".$e;
     	}
@@ -159,8 +221,8 @@ class principal implements interfazPrincipalDAO{
                     <input id="fechaNac" class="form-control form-control-sm" type="date" value="<?=$fila['fechaNacimiento']?>">
                     <input id="domicilio" class="form-control form-control-sm" type="text" value="<?=$fila['domicilio']?>">
                     <input id="telefono" class="form-control form-control-sm" type="text" value="<?=$fila['telefono']?>">
-                    <?=$principal->selectEjecutivo()?>
-                    <?=$principal->selectSucursal()?>
+                    <?=$principal->selectEjecutivo($rut)?>
+                    <?=$principal->selectSucursal($rut)?>
                     <div class="btns-actualizar">
                         <button id="guardar" type="button" class="btn btn-success">Actualizar</button>
                         <button type="button" class="btn btn-secondary" onclick="window.close()">Cerrar</button>
