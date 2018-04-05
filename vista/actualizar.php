@@ -19,7 +19,7 @@
 </head>
 <body>
 	<div class="contenedor">
-		<div class="titulo"><h4>Actualizar</h4></div><br>
+		<div class="titulo"><h4>Actualizar registros</h4></div><br>
 		<div class="formulario">
 			<?=$principal->actualizar($_GET['rut'])?>
 		</div>
