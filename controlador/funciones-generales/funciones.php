@@ -43,8 +43,16 @@
 	}
 
 	//UPDATE
-	function actualizar(){
+	function actualizar($conexion,$tabla,$cantidadSet,$camposSet,$valoresSet,$cantidadWhere,$camposWhere,$valoresWhere){
+		$_camposSet = array();
 
+		for($i=0;$cantidadSet>$i;$i++){
+			$datoSet = explode(",",$camposSet);
+			$_camposSet[$i] = $datoSet[$i]." = ? , ";
+		}
+		print_r($_camposSet);
+
+		//$sql = $conexion->prepare("UPDATE $tabla SET persona = Daniel WHERE rut = ?");
 	}
 
 	//DELETE
@@ -55,5 +63,6 @@
 
 	}
 
+	
 
 ?>
