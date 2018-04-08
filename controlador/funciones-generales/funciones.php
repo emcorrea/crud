@@ -44,15 +44,71 @@
 
 	//UPDATE
 	function actualizar($conexion,$tabla,$cantidadSet,$camposSet,$valoresSet,$cantidadWhere,$camposWhere,$valoresWhere){
+		//Prepara los campos del SET
 		$_camposSet = array();
+		$generalCamposSet = "";
+		$n = 0;
 
 		for($i=0;$cantidadSet>$i;$i++){
+			$n++;
 			$datoSet = explode(",",$camposSet);
-			$_camposSet[$i] = $datoSet[$i]." = ? , ";
-		}
-		print_r($_camposSet);
+			if($cantidadSet==$n){
+				$_camposSet[$i] = $datoSet[$i]." = ? ";
+			}else{
+				$_camposSet[$i] = $datoSet[$i]." = ? , ";
+			}
 
-		//$sql = $conexion->prepare("UPDATE $tabla SET persona = Daniel WHERE rut = ?");
+			$generalCamposSet = $generalCamposSet.$_camposSet[$i];
+		}
+
+		//Prepara los valores del SET
+		$_valoresSet = array();
+
+		for($i=0;$cantidadSet>$i;$i++){
+			$datoSet = explode(",",$valoresSet);
+			$_valoresSet[$i] = $datoSet[$i]; 
+		}
+
+		//Prepara los campos del WHERE
+		$_camposWhere = array();
+		$generalesCamposWhere = "";
+		$n = 0;
+
+		for($i=0;$cantidadWhere>$i;$i++){
+			$n++;
+			$datoSet = explode(",",$camposWhere);
+			if($cantidadWhere==$n){
+				$_camposWhere[$i] = $datoSet[$i]." = ? ";
+			}else{
+				$_camposWhere[$i] = $datoSet[$i]." = ? , ";
+			}
+
+			$generalesCamposWhere = $generalesCamposWhere.$_camposWhere[$i];
+		}
+
+		//Prepara los valores del WHERE
+		$_valoresWhere = array();
+
+		for($i=0;$cantidadWhere>$i;$i++){
+			$datoSet = explode(",",$valoresWhere);
+			$_valoresWhere[$i] = $datoSet[$i]; 
+		}
+
+		//Prepara los valores para el array
+		$sumaFor = $cantidadSet+$cantidadWhere;
+
+		for($i=0;$sumaFor;$i++){
+
+		}
+
+
+		//print_r($_camposSet);
+		//print_r($_valoresSet);
+		//print_r($_camposWhere);
+		//print_r($_valoresWhere);
+
+		$sqlUpdate = $conexion->prepare("UPDATE $tabla SET $generalCamposSet WHERE $generalesCamposWhere");
+		$sqlUpdate->execute($_valoresSet,$_valoresWhere);
 	}
 
 	//DELETE
