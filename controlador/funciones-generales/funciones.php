@@ -44,6 +44,7 @@
 
 	//UPDATE
 	function actualizar($conexion,$tabla,$cantidadSet,$camposSet,$valoresSet,$cantidadWhere,$camposWhere,$valoresWhere){
+		$array = array();
 		//Prepara los campos del SET
 		$_camposSet = array();
 		$generalCamposSet = "";
@@ -66,7 +67,8 @@
 
 		for($i=0;$cantidadSet>$i;$i++){
 			$datoSet = explode(",",$valoresSet);
-			$_valoresSet[$i] = $datoSet[$i]; 
+			$_valoresSet[$i] = $datoSet[$i];
+			$array[$i] = $_valoresSet[$i]; 
 		}
 
 		//Prepara los campos del WHERE
@@ -88,27 +90,18 @@
 
 		//Prepara los valores del WHERE
 		$_valoresWhere = array();
+		$sumaFor = $cantidadSet+$cantidadWhere; 
+		$n=0;
 
-		for($i=0;$cantidadWhere>$i;$i++){
+		for($i=$cantidadSet;$sumaFor>$i;$i++){
 			$datoSet = explode(",",$valoresWhere);
-			$_valoresWhere[$i] = $datoSet[$i]; 
+			$_valoresWhere[$n] = $datoSet[$n];
+			$array[$i] = $_valoresWhere[$n];
+			$n++;  
 		}
-
-		//Prepara los valores para el array
-		$sumaFor = $cantidadSet+$cantidadWhere;
-
-		for($i=0;$sumaFor;$i++){
-
-		}
-
-
-		//print_r($_camposSet);
-		//print_r($_valoresSet);
-		//print_r($_camposWhere);
-		//print_r($_valoresWhere);
 
 		$sqlUpdate = $conexion->prepare("UPDATE $tabla SET $generalCamposSet WHERE $generalesCamposWhere");
-		$sqlUpdate->execute($_valoresSet,$_valoresWhere);
+		$sqlUpdate->execute($array);
 	}
 
 	//DELETE

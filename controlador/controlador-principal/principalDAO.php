@@ -214,7 +214,7 @@ class principal implements interfazPrincipalDAO{
         ?>
             <form id="cliente" name="formulario-cliente" action="#" method="POST">
                 <div class="formulario-modal">
-                    <input id="rut" class="form-control form-control-sm" type="text" value="<?=$rut?>" ">
+                    <input id="rut" class="form-control form-control-sm" type="text" value="<?=$rut?>">
                     <input id="nombre" class="form-control form-control-sm" type="text" value="<?=$fila['nombre']?>">
                     <input id="ap" class="form-control form-control-sm" type="text" value="<?=$fila['apellidoPaterno']?>">
                     <input id="am" class="form-control form-control-sm" type="text" value="<?=$fila['apellidoMaterno']?>">
