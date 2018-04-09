@@ -76,6 +76,43 @@ $("#document").ready(function(){
 			});
 		}
 	});
+
+	$("#actualizar").click(function(){
+		var rut 		= $("#actualizar").val();
+		var nombre_a 	= $("#nombre_a").val();
+		var ap_a 		= $("#ap_a").val();
+		var am_a 		= $("#am_a").val();
+		var fechaNac_a 	= $("#fechaNac_a").val();
+		var domicilio_a = $("#domicilio_a").val();
+		var telefono_a 	= $("#telefono_a").val();
+		var ejecutivo_a = $("#ejecutivo_a").val();
+		var sucursal_a 	= $("#sucursal_a").val();
+
+		var datos =
+			{
+				rut:rut,
+				nombre_a:nombre_a,
+				ap_a:ap_a,
+				am_a:am_a,
+				fechaNac_a:fechaNac_a,
+				domicilio_a:domicilio_a,
+				telefono_a:telefono_a,
+				ejecutivo_a:ejecutivo_a,
+				sucursal_a:sucursal_a
+			};
+
+		$.ajax({
+			method:'POST',
+			url:'../controlador/php/ajax-controlador.php',
+			data: datos,
+			success:function(data){
+				alert("Datos actualizados correctamente");
+				location.close();
+				//$("#resultado").html(data);
+			}
+		});
+
+	});
 		
 });
 

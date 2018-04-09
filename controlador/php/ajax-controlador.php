@@ -28,10 +28,18 @@ if(isset($_REQUEST['rut']) && isset($_REQUEST['nombre']) && isset($_REQUEST['aPa
 
     $principal->eliminarCliente($rut);
 
-}else if(isset($_REQUEST['ventanaRut'])){
-    $rut = $_REQUEST['ventanaRut'];
-    
-    $principal->actualizar($rut);
+}else if(isset($_REQUEST['rut'])){
+    $rut        = $_REQUEST['rut'];
+    $nombre     = $_REQUEST['nombre_a'];
+    $ap         = $_REQUEST['ap_a'];
+    $am         = $_REQUEST['am_a'];
+    $fechaNac   = $_REQUEST['fechaNac_a'];
+    $domicilio  = $_REQUEST['domicilio_a'];
+    $telefono   = $_REQUEST['telefono_a'];
+    $ejecutivo  = $_REQUEST['ejecutivo_a'];
+    $sucursal   = $_REQUEST['sucursal_a'];
+
+    $principal->actualiza($rut,$nombre,$ap,$am,$fechaNac,$domicilio,$telefono,$ejecutivo,$sucursal);
 
 }else{
     echo"No se pudo instanciar la grabación";

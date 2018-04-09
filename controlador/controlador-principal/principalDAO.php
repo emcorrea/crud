@@ -32,7 +32,7 @@ class principal implements interfazPrincipalDAO{
 				$sql=$conexion->prepare("SELECT * FROM EJECUTIVO WHERE rutEjecutivo != ? AND activo = ?");
 				$sql->execute(array($ejecutivo,1));
 				?>
-				<select name="ejecutivo" id="ejecutivo" class="form-control form-control-sm">
+				<select name="ejecutivo" id="ejecutivo_a" class="form-control form-control-sm">
 					<option value="<?=$ejecutivo?>"><?=$nomEjecutivo?></option>
 				<?php
 				while($resultado = $sql->fetch()){
@@ -88,7 +88,7 @@ class principal implements interfazPrincipalDAO{
 				$sql=$conexion->prepare("SELECT * FROM SUCURSAL WHERE codigoSucursal != ? AND activo = ?");
 				$sql->execute(array($sucursal,1));
 				?>
-				<select name="sucursal" id="sucursal" class="form-control form-control-sm">
+				<select name="sucursal" id="sucursal_a" class="form-control form-control-sm">
 					<option value="<?=$sucursal?>"><?=$nomEjecutivo?></option>
 				<?php
 				while($resultado = $sql->fetch()){
@@ -214,26 +214,41 @@ class principal implements interfazPrincipalDAO{
         ?>
             <form id="cliente" name="formulario-cliente" action="#" method="POST">
                 <div class="formulario-modal">
-                    <input id="rut" class="form-control form-control-sm" type="text" value="<?=$rut?>">
-                    <input id="nombre" class="form-control form-control-sm" type="text" value="<?=$fila['nombre']?>">
-                    <input id="ap" class="form-control form-control-sm" type="text" value="<?=$fila['apellidoPaterno']?>">
-                    <input id="am" class="form-control form-control-sm" type="text" value="<?=$fila['apellidoMaterno']?>">
-                    <input id="fechaNac" class="form-control form-control-sm" type="date" value="<?=$fila['fechaNacimiento']?>">
-                    <input id="domicilio" class="form-control form-control-sm" type="text" value="<?=$fila['domicilio']?>">
-                    <input id="telefono" class="form-control form-control-sm" type="text" value="<?=$fila['telefono']?>">
+                    <input id="rut_a" class="form-control form-control-sm" type="text" value="<?=$rut?>">
+                    <input id="nombre_a" class="form-control form-control-sm" type="text" value="<?=$fila['nombre']?>">
+                    <input id="ap_a" class="form-control form-control-sm" type="text" value="<?=$fila['apellidoPaterno']?>">
+                    <input id="am_a" class="form-control form-control-sm" type="text" value="<?=$fila['apellidoMaterno']?>">
+                    <input id="fechaNac_a" class="form-control form-control-sm" type="date" value="<?=$fila['fechaNacimiento']?>">
+                    <input id="domicilio_a" class="form-control form-control-sm" type="text" value="<?=$fila['domicilio']?>">
+                    <input id="telefono_a" class="form-control form-control-sm" type="text" value="<?=$fila['telefono']?>">
                     <?=$principal->selectEjecutivo($rut)?>
                     <?=$principal->selectSucursal($rut)?>
                     <div class="btns-actualizar">
-                        <button id="actualizar" type="button" class="btn btn-info btn-sm">Actualizar</button>
+                        <button id="actualizar" type="button" class="btn btn-info btn-sm" value="<?=$rut?>">Actualizar</button>
                         <button type="button" class="btn btn-danger btn-sm" onclick="window.close()">Cerrar</button>
                     </div>
                 </div>
             </form>
         <?php
         } catch (Exception $e) {
-            
+            echo"No se pudo ejecutar la funcion Eliminar: Error ".$e;
         }
-    }
+	}
+	
+	function actualiza($rut,$nombre,$ap,$am,$fechaNac,$domicilio,$telefono,$ejecutivo,$sucursal){
+		try{
+			include __DIR__.'../../funciones-generales/funciones.php';
+			$conexion   = new DBconexion();
+
+			actualizar($conexion,"PERSONA",7,"rut,nombre,apellidoPaterno,apellidoMaterno,fechaNacimiento,domicilio,telefono","$rut,$nombre,$ap,$am,$fechaNac,$domicilio,$telefono",1,"rut","$rut");
+			actualizar($conexion,"CLIENTE",2,"ejecutivo,sucursal","$ejecutivo,$sucursal",1,"rutPersona","$rut");
+
+
+		} catch(Exception $e){
+			echo"No se pudo ejecutar la funcion Eliminar: Error ".$e;
+		}
+
+	}
 	
 }
 
