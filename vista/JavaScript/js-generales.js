@@ -107,7 +107,7 @@ $("#document").ready(function(){
 			data: datos,
 			success:function(data){
 				alert("Datos actualizados correctamente");
-				location.close();
+				window.close();
 				//$("#resultado").html(data);
 			}
 		});
